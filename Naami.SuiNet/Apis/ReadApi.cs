@@ -28,6 +28,13 @@ public class ReadApi : IReadApi
         return _jsonRpcClient.SendAsync<SuiObjectInfo[]>(method, new object[] { objectId });
     }
 
+    public Task<SuiObjectReadResult<SuiParsedData<T>>> GetParsedObject<T>(ObjectId objectId)
+    {
+        const string method = "sui_getObject";
+
+        return _jsonRpcClient.SendAsync<SuiObjectReadResult<SuiParsedData<T>>>(method, new object[] { objectId });
+    }
+
     public Task<SuiObjectReadResult<SuiParsedData>> GetParsedObject(ObjectId objectId)
     {
         const string method = "sui_getObject";

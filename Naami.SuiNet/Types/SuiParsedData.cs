@@ -18,3 +18,19 @@ public record SuiParsedData(DataType DataType)
     // SuiMovePackage
     public ObjectDictionary? Disassembled { get; set; }
 }
+
+public record SuiParsedData<T>(DataType DataType)
+{
+    // SuiParsedMoveObject
+    public string? Type { get; set; }
+    
+    // SuiParsedMoveObject
+    [DataMember(Name = "has_public_transfer")]
+    public bool? HasPublicTransfer { get; set; }
+
+    // SuiParsedMoveObject
+    public T? Fields { get; set; }
+
+    // SuiMovePackage
+    public ObjectDictionary? Disassembled { get; set; }
+}

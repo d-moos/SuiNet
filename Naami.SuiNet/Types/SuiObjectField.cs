@@ -1,3 +1,5 @@
-﻿namespace Naami.SuiNet.Types;
+﻿using Naami.SuiNet.Types.Custom;
 
-public record SuiObjectField<T>(string Type, T Fields);
+namespace Naami.SuiNet.Types;
+
+public record SuiObjectField<T>(SuiObjectType Type, T Fields);
