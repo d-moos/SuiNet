@@ -1,4 +1,4 @@
-using Naami.SuiSdk.Types;
+using Naami.SuiNet.Types;
 using ServiceStack;
 
 namespace Naami.SuiSdk.Tests;

@@ -1,9 +1,6 @@
-﻿
-using Naami.SuiSdk.Apis;
-using Naami.SuiSdk.JsonRpc;
-using Naami.SuiSdk.Types.Custom;
-using ServiceStack;
-using ServiceStack.Text;
+﻿using Naami.SuiNet.Apis;
+using Naami.SuiNet.JsonRpc;
+using Naami.SuiNet.Types.Custom;
 
 namespace Naami.SuiSdk.Tests;
 
