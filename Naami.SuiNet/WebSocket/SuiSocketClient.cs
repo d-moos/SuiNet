@@ -1,8 +1,8 @@
 ﻿
 using Microsoft.Extensions.Logging;
+using Naami.SuiNet.Apis.Read.Events;
+using Naami.SuiNet.Apis.Read.Transactions;
 using Naami.SuiNet.JsonRpc;
-using Naami.SuiNet.Types.Events;
-using Naami.SuiNet.Types.Transactions;
 using ServiceStack;
 using Websocket.Client;
 

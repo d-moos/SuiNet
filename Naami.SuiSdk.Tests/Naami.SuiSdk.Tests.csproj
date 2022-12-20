@@ -14,11 +14,16 @@
         <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
         <PackageReference Include="NUnit.Analyzers" Version="3.3.0" />
         <PackageReference Include="coverlet.collector" Version="3.1.2" />
+        <PackageReference Include="Shouldly" Version="4.1.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Naami.SuiNet\Naami.SuiNet.csproj" />
       <ProjectReference Include="..\Naami.SuiSdk\Naami.SuiSdk.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="TypeExtensions\Sui" />
     </ItemGroup>
 
 </Project>

@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naami.SuiSdk.Tests", "Naami
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naami.SuiNet", "Naami.SuiNet\Naami.SuiNet.csproj", "{10552B1A-C370-4527-9EB4-A91E7B51B283}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naami.BCS", "Naami.BCS\Naami.BCS.csproj", "{825275F4-0EDB-4DF7-83B0-E5A1B0C0B348}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{61208446-A663-421E-B7C2-1CD57064C775}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,11 @@ Global
 		{10552B1A-C370-4527-9EB4-A91E7B51B283}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10552B1A-C370-4527-9EB4-A91E7B51B283}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10552B1A-C370-4527-9EB4-A91E7B51B283}.Release|Any CPU.Build.0 = Release|Any CPU
+		{825275F4-0EDB-4DF7-83B0-E5A1B0C0B348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{825275F4-0EDB-4DF7-83B0-E5A1B0C0B348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{825275F4-0EDB-4DF7-83B0-E5A1B0C0B348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{825275F4-0EDB-4DF7-83B0-E5A1B0C0B348}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal
