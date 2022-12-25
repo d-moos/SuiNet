@@ -1,0 +1,20 @@
+name: Build Docker Images
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build-runner:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set env
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+    - name: Build SuiNet
+      run: dotnet build ./Naami.SuiNet/ --configuration Release -p:VersionPrefix=$RELEASE_VERSION
+    - name: Pack SuiNet
+      run: dotnet pack ./Naami.SuiNet/ --configuration Release -p:VersionPrefix=$RELEASE_VERSION
+    - name: Publish Nuget
+      run: dotnet nuget push "./Naami.SuiNet/bin/Release/Naami.SuiNet.$RELEASE_VERSION.nupkg" --api-key ${{ secrets.DOCKER_ACCESS_TOKEN }} --source "github"
