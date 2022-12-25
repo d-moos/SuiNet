@@ -18,5 +18,7 @@ jobs:
       run: dotnet build ./Naami.SuiNet/ --configuration Release -p:VersionPrefix=$RELEASE_VERSION
     - name: Pack SuiNet
       run: dotnet pack ./Naami.SuiNet/ --configuration Release -p:VersionPrefix=$RELEASE_VERSION
-    - name: Publish Nuget
+    - name: Publish Nuget Github Packages
       run: dotnet nuget push "./Naami.SuiNet/bin/Release/Naami.SuiNet.$RELEASE_VERSION.nupkg" --api-key ${{ secrets.DMOOS_PAT_NUGET_PUSH }} --source "github"
+    - name: Publish Nuget nuget.org
+      run: dotnet nuget push "./Naami.SuiNet/bin/Release/Naami.SuiNet.$RELEASE_VERSION.nupkg" --api-key ${{ secrets.DMOOS_PAT_NUGET_ORG_PUSH }} --source "nuget"
