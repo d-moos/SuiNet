@@ -19,7 +19,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Naami.SuiNet\Naami.SuiNet.csproj" />
-      <ProjectReference Include="..\Naami.SuiSdk\Naami.SuiSdk.csproj" />
     </ItemGroup>
 
     <ItemGroup>
