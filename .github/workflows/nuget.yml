@@ -1,0 +1,40 @@
+name: Build Docker Images
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  publish-suinet:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set env
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+    - name: Dotnet Restore SuiNet
+      run: dotnet restore ./Naami.SuiNet/
+    - name: Build SuiNet
+      run: dotnet build ./Naami.SuiNet/ --configuration Release -p:VersionPrefix=$RELEASE_VERSION
+    - name: Pack SuiNet
+      run: dotnet pack ./Naami.SuiNet/ --configuration Release -p:VersionPrefix=$RELEASE_VERSION
+    - name: Publish Nuget Github Packages (SuiNet)
+      run: dotnet nuget push "./Naami.SuiNet/bin/Release/Naami.SuiNet.$RELEASE_VERSION.nupkg" --api-key ${{ secrets.DMOOS_PAT_NUGET_PUSH }} --source "github"
+    - name: Publish Nuget nuget.org  (SuiNet)
+      run: dotnet nuget push "./Naami.SuiNet/bin/Release/Naami.SuiNet.$RELEASE_VERSION.nupkg" --api-key ${{ secrets.DMOOS_PAT_NUGET_ORG_PUSH }} --source "nuget"
+  publish-suinet-extensions:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set env
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+    - name: Dotnet Restore SuiNet.Extensions
+      run: dotnet restore ./Naami.SuiNet.Extensions/
+    - name: Build SuiNet.Extensions
+      run: dotnet build ./Naami.SuiNet.Extensions/ --configuration Release -p:VersionPrefix=$RELEASE_VERSION
+    - name: Pack SuiNet.Extensions
+      run: dotnet pack ./Naami.SuiNet.Extensions/ --configuration Release -p:VersionPrefix=$RELEASE_VERSION
+    - name: Publish Nuget Github Packages (SuiNet.Extensions)
+      run: dotnet nuget push "./Naami.SuiNet.Extensions/bin/Release/Naami.SuiNet.Extensions.$RELEASE_VERSION.nupkg" --api-key ${{ secrets.DMOOS_PAT_NUGET_PUSH }} --source "github"
+    - name: Publish Nuget nuget.org  (SuiNet)
+      run: dotnet nuget push "./Naami.SuiNet.Extensions/bin/Release/Naami.SuiNet.Extensions.$RELEASE_VERSION.nupkg" --api-key ${{ secrets.DMOOS_PAT_NUGET_ORG_PUSH }} --source "nuget"

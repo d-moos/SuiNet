@@ -1,10 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <Authors>Daniel Moos</Authors>
+        <TargetFramework>net6.0</TargetFramework>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,10 +16,6 @@
         <PackageReference Include="NLog" Version="5.0.4" />
         <PackageReference Include="NLog.Extensions.Logging" Version="5.0.4" />
         <PackageReference Include="NSec.Cryptography" Version="22.4.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="TypeExtensions\MoveStd" />
     </ItemGroup>
 
 </Project>

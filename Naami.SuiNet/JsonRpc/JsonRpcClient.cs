@@ -1,4 +1,5 @@
 ﻿using ServiceStack;
+using ServiceStack.Text;
 
 namespace Naami.SuiNet.JsonRpc;
 
@@ -13,6 +14,10 @@ public class JsonRpcClient : IJsonRpcClient
 
     public async Task<TResult> SendAsync<TResult>(string method, object[] payload)
     {
+        using var jsConfig = JsConfig.BeginScope();
+        jsConfig.ExcludeTypeInfo = true;
+        jsConfig.IncludeNullValues = false;
+        jsConfig.IncludeTypeInfo = false;
         var id = Guid.NewGuid().ToString();
 
         var request = new Request(method, id)

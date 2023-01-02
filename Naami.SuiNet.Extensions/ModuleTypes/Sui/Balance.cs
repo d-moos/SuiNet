@@ -1,4 +1,4 @@
-﻿namespace Naami.SuiNet.TypeExtensions.Sui;
+﻿namespace Naami.SuiNet.Extensions.TypeExtensions.Sui;
 
 public readonly struct Balance
 {

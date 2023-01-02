@@ -1,16 +1,15 @@
-﻿using Naami.SuiNet.Apis;
-using Naami.SuiNet.Apis.Read;
+﻿using Naami.SuiNet.Apis.Read;
+using Naami.SuiNet.Extensions.TypeExtensions.Sui;
 using Naami.SuiNet.JsonRpc;
-using Naami.SuiNet.TypeExtensions.Sui;
 using Naami.SuiNet.Types.Numerics;
 using ServiceStack.Text;
 using Shouldly;
-using Coin = Naami.SuiNet.TypeExtensions.Sui.Coin;
-using Balance = Naami.SuiNet.TypeExtensions.Sui.Balance;
-using Supply = Naami.SuiNet.TypeExtensions.Sui.Supply;
+using Coin = Naami.SuiNet.Extensions.TypeExtensions.Sui.Coin;
+using Balance = Naami.SuiNet.Extensions.TypeExtensions.Sui.Balance;
+using Supply = Naami.SuiNet.Extensions.TypeExtensions.Sui.Supply;
 
 
-namespace Naami.SuiSdk.Tests.E2E;
+namespace Naami.SuiNet.Extensions.Tests;
 
 /// <summary>
 /// In order to check if the RPC Endpoint still returns the data in a format we're expecting (casing, nested field structuring, ...)
