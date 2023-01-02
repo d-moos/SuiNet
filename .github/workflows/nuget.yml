@@ -1,4 +1,4 @@
-name: Build Docker Images
+name: Publish NuGet Packages 
 
 on:
   push:
