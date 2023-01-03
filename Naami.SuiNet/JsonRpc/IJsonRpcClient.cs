@@ -4,8 +4,6 @@ namespace Naami.SuiNet.JsonRpc;
 
 public interface IJsonRpcClient
 {
-    public Task<TResult> SendAsync<TResult>(string method, object[] payload);
-
     public Task<TResult> SendAsync<TResult, TRequest>(string method, TRequest payload);
     public Task<TResult> SendAsync<TResult>(string method);
 
