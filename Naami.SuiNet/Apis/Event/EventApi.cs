@@ -1,4 +1,6 @@
-﻿using Naami.SuiNet.JsonRpc;
+﻿using Naami.SuiNet.Apis.Event.Filter;
+using Naami.SuiNet.JsonRpc;
+using Naami.SuiNet.Types;
 
 namespace Naami.SuiNet.Apis.Event;
 
@@ -12,6 +14,7 @@ public class EventApi : IEventApi
     }
 
     public Task<EventPage> GetEvents<TEventFilter>(TEventFilter query, bool isDescending = false)
+        where TEventFilter : IEventFilter
     {
         const string method = "sui_getEvents";
 
@@ -25,6 +28,7 @@ public class EventApi : IEventApi
 
     public Task<EventPage> GetEvents<TEventFilter>(TEventFilter query, EventId cursor, uint limit,
         bool isDescending = false)
+        where TEventFilter : IEventFilter
     {
         const string method = "sui_getEvents";
 

@@ -4,8 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naami.SuiSdk.Tests", "Naami
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naami.SuiNet", "Naami.SuiNet\Naami.SuiNet.csproj", "{10552B1A-C370-4527-9EB4-A91E7B51B283}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{61208446-A663-421E-B7C2-1CD57064C775}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naami.SuiNet.Extensions", "Naami.SuiNet.Extensions\Naami.SuiNet.Extensions.csproj", "{3D29161F-1B94-4EB0-B68A-8174DA365C29}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naami.SuiNet.Extensions.Tests", "Naami.SuiNet.Extensions.Tests\Naami.SuiNet.Extensions.Tests.csproj", "{C711D549-638E-4B92-92D8-9067BB0C1CB6}"

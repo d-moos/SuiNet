@@ -1,12 +1,13 @@
 ﻿using Naami.SuiNet.Apis.Read;
-using Naami.SuiNet.Extensions.TypeExtensions.Sui;
+using Naami.SuiNet.Extensions.ModuleTypes.Sui;
 using Naami.SuiNet.JsonRpc;
+using Naami.SuiNet.Types;
 using Naami.SuiNet.Types.Numerics;
 using ServiceStack.Text;
 using Shouldly;
-using Coin = Naami.SuiNet.Extensions.TypeExtensions.Sui.Coin;
-using Balance = Naami.SuiNet.Extensions.TypeExtensions.Sui.Balance;
-using Supply = Naami.SuiNet.Extensions.TypeExtensions.Sui.Supply;
+using Coin = Naami.SuiNet.Extensions.ModuleTypes.Sui.Coin;
+using Balance = Naami.SuiNet.Extensions.ModuleTypes.Sui.Balance;
+using Supply = Naami.SuiNet.Extensions.ModuleTypes.Sui.Supply;
 
 
 namespace Naami.SuiNet.Extensions.Tests;

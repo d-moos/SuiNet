@@ -1,5 +1,6 @@
 ﻿using Naami.SuiNet.Apis.Read;
 using Naami.SuiNet.JsonRpc;
+using Naami.SuiNet.Types;
 
 namespace Naami.SuiNet.Apis.Quorum;
 

@@ -1,6 +1,6 @@
 ﻿using Naami.SuiNet.Types;
 
-namespace Naami.SuiNet.Extensions.TypeExtensions.Sui;
+namespace Naami.SuiNet.Extensions.ModuleTypes.Sui;
 
 public class Uid
 {

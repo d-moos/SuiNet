@@ -1,6 +1,6 @@
-﻿using Naami.SuiNet.Apis.Read.Transactions;
-using Naami.SuiNet.JsonRpc;
+﻿using Naami.SuiNet.JsonRpc;
 using Naami.SuiNet.Types;
+using Naami.SuiNet.Types.Transactions;
 
 namespace Naami.SuiNet.Apis.Read;
 

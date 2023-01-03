@@ -1,8 +1,13 @@
-﻿namespace Naami.SuiNet.JsonRpc;
+﻿using ServiceStack;
+
+namespace Naami.SuiNet.JsonRpc;
 
 public interface IJsonRpcClient
 {
     public Task<TResult> SendAsync<TResult>(string method, object[] payload);
+
+    public Task<TResult> SendAsync<TResult, TRequest>(string method, TRequest payload);
+    public Task<TResult> SendAsync<TResult>(string method);
 
     public Task<Response<TResult>[]> SendBatchAsync<TResult>(BatchRequest request);
 }
@@ -22,5 +27,5 @@ public class BatchRequest
         _requests.Add(id, request);
     }
 
-    public Request[] Requests => _requests.Values.ToArray();
+    public Request[] Requests => Enumerable.ToArray(_requests.Values);
 }
