@@ -1,4 +1,5 @@
-﻿using Naami.SuiNet.JsonRpc;
+﻿using Naami.SuiNet.Apis.TransactionBuilder.Requests;
+using Naami.SuiNet.JsonRpc;
 using Naami.SuiNet.Types;
 
 namespace Naami.SuiNet.Apis.TransactionBuilder;
@@ -17,22 +18,12 @@ public class TransactionBuilderApi : ITransactionBuilderApi
         ObjectId suiObjectId,
         ulong gasBudget,
         SuiAddress recipient,
-        ulong? amount = null
+        ulong amount
     )
     {
         const string method = "sui_transferSui";
-        var parameters = new List<object>
-        {
-            signer,
-            suiObjectId,
-            gasBudget,
-            recipient
-        };
-
-        if (amount.HasValue)
-            parameters.Add(amount.Value);
-
-        return _jsonRpcClient.SendAsync<TransactionBytes>(method, parameters.ToArray());
+        return _jsonRpcClient.SendAsync<TransactionBytes, TransferSuiRequest>(method,
+            new TransferSuiRequest(signer, suiObjectId, gasBudget, recipient, amount));
     }
 
     public Task<TransactionBytes> TransferObject(
@@ -44,24 +35,16 @@ public class TransactionBuilderApi : ITransactionBuilderApi
     )
     {
         const string method = "sui_transferObject";
-        var parameters = gasObject.HasValue
-            ? new object[]
-            {
-                signer,
-                objectId,
-                gasObject.Value,
-                gasBudget,
-                recipient
-            }
-            : new object[]
-            {
-                signer,
-                objectId,
-                gasBudget,
-                recipient
-            };
 
-        return _jsonRpcClient.SendAsync<TransactionBytes>(method, parameters);
+        return _jsonRpcClient.SendAsync<TransactionBytes, TransferObjectRequest>(method, new TransferObjectRequest(
+            signer,
+            objectId,
+            gasBudget,
+            recipient
+        )
+        {
+            Gas = gasObject
+        });
     }
 
     public Task<TransactionBytes> Pay(
@@ -74,26 +57,11 @@ public class TransactionBuilderApi : ITransactionBuilderApi
     )
     {
         const string method = "sui_pay";
-        var parameters = gasObject.HasValue
-            ? new object[]
+        return _jsonRpcClient.SendAsync<TransactionBytes, PayRequest>(method,
+            new PayRequest(signer, inputCoins, recipients, amounts, gasBudget)
             {
-                signer,
-                inputCoins,
-                recipients,
-                amounts,
-                gasObject.Value,
-                gasBudget
-            }
-            : new object[]
-            {
-                signer,
-                inputCoins,
-                recipients,
-                amounts,
-                gasBudget
-            };
-
-        return _jsonRpcClient.SendAsync<TransactionBytes>(method, parameters);
+                Gas = gasObject
+            });
     }
 
     public Task<TransactionBytes> PaySui(
@@ -105,14 +73,13 @@ public class TransactionBuilderApi : ITransactionBuilderApi
     )
     {
         const string method = "sui_paySui";
-        return _jsonRpcClient.SendAsync<TransactionBytes>(method, new object[]
-        {
+        return _jsonRpcClient.SendAsync<TransactionBytes, PaySuiRequest>(method, new PaySuiRequest(
             signer,
             inputCoins,
             recipients,
             amounts,
             gasBudget
-        });
+        ));
     }
 
     public Task<TransactionBytes> PayAllSui(
@@ -123,13 +90,12 @@ public class TransactionBuilderApi : ITransactionBuilderApi
     )
     {
         const string method = "sui_payAllSui";
-        return _jsonRpcClient.SendAsync<TransactionBytes>(method, new object[]
-        {
+        return _jsonRpcClient.SendAsync<TransactionBytes, PayAllSuiRequest>(method, new PayAllSuiRequest(
             signer,
             inputCoins,
             recipient,
             gasBudget
-        });
+        ));
     }
 
     public Task<TransactionBytes> MoveCall(
@@ -144,55 +110,26 @@ public class TransactionBuilderApi : ITransactionBuilderApi
     )
     {
         const string method = "sui_moveCall";
-        var parameters = gasObject.HasValue
-            ? new object[]
-            {
-                signer,
-                packageObjectId,
-                module,
-                function,
-                typeArgs,
-                callArgs,
-                gasObject.Value,
-                gasBudget
-            }
-            : new object[]
-            {
-                signer,
-                packageObjectId,
-                module,
-                function,
-                typeArgs,
-                callArgs,
-                gasBudget
-            };
 
-        return _jsonRpcClient.SendAsync<TransactionBytes>(method, parameters);
+        return _jsonRpcClient.SendAsync<TransactionBytes, MoveCallRequest>(method,
+            new MoveCallRequest(signer, packageObjectId, module, function, typeArgs, callArgs, gasBudget)
+            {
+                Gas = gasObject
+            });
     }
 
     public Task<TransactionBytes> Publish(
         SuiAddress signer,
-        byte[][] compiledModules,
+        string[] compiledModules,
         ulong gasBudget,
         ObjectId? gasObject = null
     )
     {
         const string method = "sui_publish";
-        var parameters = gasObject.HasValue
-            ? new object[]
+        return _jsonRpcClient.SendAsync<TransactionBytes, PublishRequest>(method,
+            new PublishRequest(signer, compiledModules, gasBudget)
             {
-                signer,
-                compiledModules,
-                gasObject.Value,
-                gasBudget
-            }
-            : new object[]
-            {
-                signer,
-                compiledModules,
-                gasBudget
-            };
-
-        return _jsonRpcClient.SendAsync<TransactionBytes>(method, parameters);
+                Gas = gasObject
+            });
     }
 }

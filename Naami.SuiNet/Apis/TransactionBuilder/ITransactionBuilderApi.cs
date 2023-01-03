@@ -9,7 +9,7 @@ public interface ITransactionBuilderApi
         ObjectId suiObjectId,
         ulong gasBudget,
         SuiAddress recipient,
-        ulong? amount = null
+        ulong amount
     );
 
     public Task<TransactionBytes> TransferObject(
@@ -57,7 +57,7 @@ public interface ITransactionBuilderApi
     
     public Task<TransactionBytes> Publish(
         SuiAddress signer,
-        byte[][] compiledModules,
+        string[] compiledModules,
         ulong gasBudget,
         ObjectId? gasObject = null
     );

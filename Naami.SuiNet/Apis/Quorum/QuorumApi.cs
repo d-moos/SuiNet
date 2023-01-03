@@ -1,4 +1,5 @@
-﻿using Naami.SuiNet.Apis.Read;
+﻿using Naami.SuiNet.Apis.Quorum.Requests;
+using Naami.SuiNet.Apis.Read;
 using Naami.SuiNet.JsonRpc;
 using Naami.SuiNet.Types;
 
@@ -19,12 +20,16 @@ public class QuorumApi : IQuorumApi
         string base64Signature,
         string publicKey,
         ExecuteTransactionRequestType requestType
-    ) => _client.SendAsync<SuiExecuteTransactionResponse>("sui_executeTransaction", new[]
-    {
-        base64TxBytes,
-        signatureScheme.ToString(),
-        base64Signature,
-        publicKey,
-        requestType.ToString()
-    });
+    ) => _client.SendAsync<
+        SuiExecuteTransactionResponse,
+        ExecuteTransactionRequest
+    >(
+        "sui_executeTransaction",
+        new ExecuteTransactionRequest(
+            base64TxBytes,
+            signatureScheme.ToString(),
+            base64Signature,
+            publicKey,
+            requestType.ToString()
+        ));
 }

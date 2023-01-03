@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naami.SuiSdk.Tests", "Naami.SuiSdk.Tests\Naami.SuiSdk.Tests.csproj", "{B204B610-67B0-4CAA-AE16-81AC6FF91163}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naami.SuiNet.Tests", "Naami.SuiNet.Tests\Naami.SuiNet.Tests.csproj", "{B204B610-67B0-4CAA-AE16-81AC6FF91163}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naami.SuiNet", "Naami.SuiNet\Naami.SuiNet.csproj", "{10552B1A-C370-4527-9EB4-A91E7B51B283}"
 EndProject

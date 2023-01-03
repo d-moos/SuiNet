@@ -6,6 +6,10 @@
         <Nullable>enable</Nullable>
 
         <IsPackable>false</IsPackable>
+
+        <AssemblyName>Naami.SuiNet.Tests</AssemblyName>
+
+        <RootNamespace>Naami.SuiNet.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

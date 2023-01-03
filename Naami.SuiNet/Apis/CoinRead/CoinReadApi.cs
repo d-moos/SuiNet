@@ -1,4 +1,5 @@
-﻿using Naami.SuiNet.JsonRpc;
+﻿using Naami.SuiNet.Apis.CoinRead.Requests;
+using Naami.SuiNet.JsonRpc;
 using Naami.SuiNet.Types;
 
 namespace Naami.SuiNet.Apis.CoinRead;
@@ -15,61 +16,64 @@ public class CoinReadApi : ICoinReadApi
     public Task<CoinPage> GetCoins(SuiAddress owner, SuiObjectType coinType, ObjectId cursor, uint size)
     {
         const string method = "sui_getCoins";
-
-        return _jsonRpcClient.SendAsync<CoinPage>(method, new object[]
+        
+        return _jsonRpcClient.SendAsync<CoinPage, GetCoinsRequest>(method, new GetCoinsRequest(owner, coinType)
         {
-            owner,
-            coinType,
-            cursor,
-            size
+            Cursor = cursor,
+            Limit = size
+        });
+    }
+    
+    public Task<CoinPage> GetCoins(SuiAddress owner, SuiObjectType coinType, uint size)
+    {
+        const string method = "sui_getCoins";
+        
+        return _jsonRpcClient.SendAsync<CoinPage, GetCoinsRequest>(method, new GetCoinsRequest(owner, coinType)
+        {
+            Limit = size
+        });
+    }
+    
+    public Task<CoinPage> GetCoins(SuiAddress owner, SuiObjectType coinType, ObjectId cursor)
+    {
+        const string method = "sui_getCoins";
+        return _jsonRpcClient.SendAsync<CoinPage, GetCoinsRequest>(method, new GetCoinsRequest(owner, coinType)
+        {
+            Cursor = cursor,
         });
     }
 
     public Task<CoinPage> GetCoins(SuiAddress owner, SuiObjectType coinType)
     {
         const string method = "sui_getCoins";
-
-        return _jsonRpcClient.SendAsync<CoinPage>(method, new object[]
-        {
-            owner,
-            coinType
-        });
+        return _jsonRpcClient.SendAsync<CoinPage, GetCoinsRequest>(method, new GetCoinsRequest(owner, coinType));
     }
 
     public Task<Balance[]> GetBalances(SuiAddress owner, SuiObjectType coinType)
     {
         const string method = "sui_getBalance";
-        return _jsonRpcClient.SendAsync<Balance[]>(method, new object[]
+        return _jsonRpcClient.SendAsync<Balance[], GetBalanceRequest>(method, new GetBalanceRequest(owner)
         {
-            owner,
-            coinType
+            CoinType = coinType
         });
     }
 
     public Task<Balance[]> GetBalances(SuiAddress owner)
     {
         const string method = "sui_getBalance";
-        return _jsonRpcClient.SendAsync<Balance[]>(method, new object[]
-        {
-            owner
-        });
+        return _jsonRpcClient.SendAsync<Balance[], GetBalanceRequest>(method, new GetBalanceRequest(owner));
     }
 
     public Task<Supply> GetTotalSupply(SuiObjectType coinType)
     {
         const string method = "sui_getTotalSupply";
-        return _jsonRpcClient.SendAsync<Supply>(method, new object[]
-        {
-            coinType
-        });
+        return _jsonRpcClient.SendAsync<Supply, GetTotalSupplyRequest>(method, new GetTotalSupplyRequest(coinType));
     }
     
     public Task<CoinMetadata> GetCoinMetaData(SuiObjectType coinType)
     {
         const string method = "sui_getCoinMetadata";
-        return _jsonRpcClient.SendAsync<CoinMetadata>(method, new object[]
-        {
-            coinType
-        });
+        return _jsonRpcClient.SendAsync<CoinMetadata, GetCoinMetadataRequest>(method,
+            new GetCoinMetadataRequest(coinType));
     }
 }

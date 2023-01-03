@@ -15,7 +15,7 @@ public class DiscoveryApi : IDiscoveryApi
 
     public async Task<string> GetVersion()
     {
-        var discovery = await _jsonRpcClient.SendAsync<Discovery>("rpc.discover", Array.Empty<object>());
+        var discovery = await _jsonRpcClient.SendAsync<Discovery>("rpc.discover");
         return discovery.Info.Version;
     }
 }
