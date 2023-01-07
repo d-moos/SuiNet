@@ -34,7 +34,7 @@ public class ReadApi : IReadApi
         );
     }
 
-    public Task<SuiObjectReadResult<SuiParsedData<T>>> GetParsedObject<T>(ObjectId objectId)
+    public Task<SuiObjectReadResult<SuiParsedData<T>>> GetObject<T>(ObjectId objectId)
     {
         const string method = "sui_getObject";
 
@@ -42,7 +42,7 @@ public class ReadApi : IReadApi
             new GetObjectRequest(objectId));
     }
 
-    public Task<SuiObjectReadResult<SuiParsedData>> GetParsedObject(ObjectId objectId)
+    public Task<SuiObjectReadResult<SuiParsedData>> GetObject(ObjectId objectId)
     {
         const string method = "sui_getObject";
 
@@ -50,7 +50,7 @@ public class ReadApi : IReadApi
             new GetObjectRequest(objectId));
     }
 
-    public Task<SuiObjectReadResult<SuiRawData>> GetObject(ObjectId objectId)
+    public Task<SuiObjectReadResult<SuiRawData>> GetRawObject(ObjectId objectId)
     {
         const string method = "sui_getRawObject";
 
@@ -79,5 +79,30 @@ public class ReadApi : IReadApi
 
         return _jsonRpcClient.SendAsync<SuiTransactionResponse, GetTransactionRequest>(method,
             new GetTransactionRequest(digest));
+    }
+
+    public Task<DynamicFieldPage> GetDynamicFields(ObjectId parentObjectId, ObjectId? cursor = null, uint? limit = null)
+    {
+        const string method = "sui_getDynamicFields";
+
+        return _jsonRpcClient.SendAsync<DynamicFieldPage, GetDynamicFieldsRequest>(method,
+            new GetDynamicFieldsRequest(parentObjectId)
+            {
+                Cursor = cursor,
+                Limit = limit
+            });
+    }
+
+    public Task<SuiObjectReadResult<SuiParsedData<T>>> GetDynamicFieldObject<T>(ObjectId parentObjectId, byte[] field)
+    {
+        const string method = "sui_getDynamicFieldObject";
+        
+        var stringValues = field.Select(x => $"{x}u8");
+        var v = $"vector[{string.Join(", ", stringValues)}]";
+        
+
+        return _jsonRpcClient.SendAsync<SuiObjectReadResult<SuiParsedData<T>>, GetDynamicFieldObjectRequest>(method,
+            new GetDynamicFieldObjectRequest(parentObjectId, v)
+        );
     }
 }

@@ -46,7 +46,7 @@ public static class EventApiExtensions
         bool isDescending = false
     )
     {
-        var page = await eventApi.GetEvents((uint)pageSize, isDescending);
+        var page = await eventApi.GetEvents(initialCursor, (uint)pageSize, isDescending);
         yield return page.Data;
 
         while (page.NextCursor != null)

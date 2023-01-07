@@ -1,3 +1,10 @@
-﻿namespace Naami.SuiNet.Types;
+﻿using System.Runtime.Serialization;
 
-public record EventId(long TxSeq, long EventSeq);
+namespace Naami.SuiNet.Types;
+
+[DataContract]
+public record EventId(
+    [property: DataMember(Name = "txSeq")] long TxSeq,
+    [property: DataMember(Name = "eventSeq")]
+    long EventSeq
+);

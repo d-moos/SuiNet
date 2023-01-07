@@ -26,7 +26,7 @@ public class ReadApiSpecifications
         JsConfig.TextCase = TextCase.SnakeCase;
         const string OnChainObject = "0xe7e8bfd5d4e878bc07f1841931a41790aed15376";
         var readApi = new ReadApi(new JsonRpcClient("https://fullnode.devnet.sui.io:443"));
-        var readResult = await readApi.GetParsedObject<Lab>(OnChainObject);
+        var readResult = await readApi.GetObject<Lab>(OnChainObject);
         _lab = readResult.ExistsResult!.Data.Fields!;
     }
 

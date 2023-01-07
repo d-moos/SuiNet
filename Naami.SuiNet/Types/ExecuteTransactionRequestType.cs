@@ -2,8 +2,6 @@
 
 public enum ExecuteTransactionRequestType
 {
-    ImmediateReturn,
-    WaitForTxCert,
     WaitForEffectsCert,
     WaitForLocalExecution,
 }

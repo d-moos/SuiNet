@@ -1,9 +1,8 @@
 ﻿using Naami.SuiNet.Apis.Event;
 using Naami.SuiNet.Apis.Event.Filter;
-using Naami.SuiNet.JsonRpc;
-using Naami.SuiNet.Types;
+using Naami.SuiSdk.Tests;
 
-namespace Naami.SuiSdk.Tests.E2E;
+namespace Naami.SuiNet.Tests.Integration;
 
 public class EventApiSpecifications
 {
