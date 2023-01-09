@@ -16,7 +16,8 @@ public static class CoinReadApiExtensions
 
         yield return page.Data;
 
-        while (page.NextCursor.HasValue)
+        while (!string.IsNullOrEmpty(page.NextCursor))
+        // while (page.NextCursor.HasValue)
         {
             page = await coinReadApi.GetCoins(owner, coinType, page.NextCursor!.Value, (uint)pageSize);
             yield return page.Data;

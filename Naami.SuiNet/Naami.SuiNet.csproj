@@ -10,7 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="ServiceStack.Text" Version="6.4.0" />
+      <PackageReference Include="ServiceStack.Text" Version="6.5.0" />
         <PackageReference Include="Websocket.Client" Version="4.4.43" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
         <PackageReference Include="NLog" Version="5.0.4" />

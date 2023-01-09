@@ -1,6 +1,8 @@
 using Naami.SuiNet.Apis.Read;
 using Naami.SuiNet.Types;
+using Newtonsoft.Json;
 using ServiceStack;
+using ServiceStack.Text;
 
 namespace Naami.SuiSdk.Tests;
 
@@ -10,6 +12,8 @@ public class Tests
     public void Setup()
     {
     }
+
+
 
     [Test]
     public void AddressOwnership()
