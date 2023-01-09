@@ -1,4 +1,6 @@
-﻿namespace Naami.SuiNet.Examples.Capy;
+﻿using Naami.SuiNet.Examples.Capy.Capy.Types;
+
+namespace Naami.SuiNet.Examples.Capy;
 
 public interface IItemStoreQueries
 {

@@ -1,7 +1,7 @@
 ﻿using Naami.SuiNet.Extensions.ModuleTypes.Sui;
 using Naami.SuiNet.Types.Numerics;
 
-namespace Naami.SuiNet.Examples.Capy;
+namespace Naami.SuiNet.Examples.Capy.Capy.Types;
 
 public record ListedItem(Uid Id, Url Url, string Name, string Type, U64 Price)
 {

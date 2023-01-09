@@ -1,30 +1,35 @@
-﻿using Naami.SuiNet.Apis.Read;
+﻿using Naami.SuiNet.Apis.Event;
+using Naami.SuiNet.Apis.Event.Filter;
+using Naami.SuiNet.Apis.Read;
+using Naami.SuiNet.Examples.Capy.Capy.Events;
+using Naami.SuiNet.Examples.Capy.Capy.Types;
 using Naami.SuiNet.Extensions.ApiStreams;
 using Naami.SuiNet.JsonRpc;
 using Naami.SuiNet.Types;
+using ServiceStack;
 
 namespace Naami.SuiNet.Examples.Capy;
 
 public class CapyQueryClient : ICapyQueries
 {
     private readonly IReadApi _readApi;
+    private readonly IEventApi _eventApi;
 
     private readonly ObjectId _packageId;
-    private readonly ObjectId _itemStoreId;
 
     private const string CapyModuleName = "capy";
     private const string ItemModuleName = "capy_item";
 
-    public CapyQueryClient(IJsonRpcClient jsonRpcClient, ObjectId packageId, ObjectId itemStoreId)
+    public CapyQueryClient(IJsonRpcClient jsonRpcClient, ObjectId packageId)
     {
         _packageId = packageId;
-        _itemStoreId = itemStoreId;
         _readApi = new ReadApi(jsonRpcClient);
+        _eventApi = new EventApi(jsonRpcClient);
     }
 
-    public async Task<Capy> GetCapy(ObjectId id)
+    public async Task<Capy.Types.Capy> GetCapy(ObjectId id)
     {
-        var response = await _readApi.GetObject<Capy>(id);
+        var response = await _readApi.GetObject<Capy.Types.Capy>(id);
         return response.ExistsResult.Data.Fields!;
     }
 
@@ -52,7 +57,7 @@ public class CapyQueryClient : ICapyQueries
         return tasks.Select(x => x.Result.ExistsResult!.Data.Fields!).ToArray();
     }
 
-    public async Task<Capy[]> GetCapies(SuiAddress owner)
+    public async Task<Capy.Types.Capy[]> GetCapies(SuiAddress owner)
     {
         var ownedObjects = await _readApi.GetObjectsOwnedByAddress(owner);
         var capyObjectInfos = ownedObjects.Where(x => x.Type.Package == _packageId && x.Type.Module == CapyModuleName);
@@ -61,5 +66,18 @@ public class CapyQueryClient : ICapyQueries
         await Task.WhenAll(tasks);
 
         return tasks.Select(x => x.Result).ToArray();
+    }
+
+    public async IAsyncEnumerable<CapyBorn> StreamCapyBornEvents(EventId? cursor = null)
+    {
+        var filter = new MoveEventEventFilter(new SuiObjectType($"{_packageId}::capy::CapyBorn"));
+        await foreach (var suiEventEnvelopes in _eventApi.GetEventStream(filter, cursor))
+        {
+            foreach (var suiEvent in suiEventEnvelopes)
+            {
+                var moveEvent = suiEvent.Event.MoveEvent!;
+                yield return moveEvent.Fields.FromObjectDictionary<CapyBorn>();
+            }
+        }
     }
 }

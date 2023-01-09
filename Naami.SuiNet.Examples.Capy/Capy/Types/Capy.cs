@@ -2,7 +2,7 @@
 using Naami.SuiNet.Extensions.ModuleTypes.Sui;
 using Naami.SuiNet.Types;
 
-namespace Naami.SuiNet.Examples.Capy;
+namespace Naami.SuiNet.Examples.Capy.Capy.Types;
 
 [DataContract]
 public record Capy(

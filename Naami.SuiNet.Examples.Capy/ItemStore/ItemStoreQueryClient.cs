@@ -1,4 +1,5 @@
 ﻿using Naami.SuiNet.Apis.Read;
+using Naami.SuiNet.Examples.Capy.Capy.Types;
 using Naami.SuiNet.Extensions.ApiStreams;
 using Naami.SuiNet.JsonRpc;
 using Naami.SuiNet.Types;
