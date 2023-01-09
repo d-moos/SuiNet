@@ -25,8 +25,4 @@
       <ProjectReference Include="..\Naami.SuiNet\Naami.SuiNet.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="TypeExtensions\Sui" />
-    </ItemGroup>
-
 </Project>
