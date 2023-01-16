@@ -48,7 +48,7 @@ public abstract class BaseReadApiSpecification
             builderResponse.TxBytes,
             SignatureScheme.ED25519,
             signature,
-            Convert.ToBase64String(Utils.TestingKeyPair.RawPublicKey),
+            Convert.ToBase64String(Utils.TestingKeyPair.PublicKey),
             ExecuteTransactionRequestType.WaitForEffectsCert
         );
 

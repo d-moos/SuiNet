@@ -54,7 +54,7 @@ public class ItemStoreCommandClient : IItemStoreCommands
             builder.TxBytes,
             SignatureScheme.ED25519,
             signature,
-            Convert.ToBase64String(_keyPair.RawPublicKey),
+            Convert.ToBase64String(_keyPair.PublicKey),
             ExecuteTransactionRequestType.WaitForEffectsCert
         );
     }

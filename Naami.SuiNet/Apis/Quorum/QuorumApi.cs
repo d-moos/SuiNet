@@ -32,4 +32,33 @@ public class QuorumApi : IQuorumApi
             publicKey,
             requestType.ToString()
         ));
+
+    public Task<SuiExecuteTransactionResponse> ExecuteTransactionSerializedSignature(
+        string base64TxBytes,
+        SignatureScheme signatureScheme,
+        string base64Signature,
+        string publicKey,
+        ExecuteTransactionRequestType requestType
+    )
+    {
+        var sigBytes = Convert.FromBase64String(base64Signature);
+        var pubBytes = Convert.FromBase64String(publicKey);
+
+        var merged = new List<byte> { (byte)signatureScheme };
+        merged.AddRange(sigBytes);
+        merged.AddRange(pubBytes);
+        var serializedSignature = Convert.ToBase64String(merged.ToArray());
+
+        return _client.SendAsync<
+            SuiExecuteTransactionResponse,
+            ExecuteTransactionSerializedSignatureRequest
+        >(
+            "sui_executeTransactionSerializedSig",
+            new ExecuteTransactionSerializedSignatureRequest(
+                base64TxBytes,
+                serializedSignature,
+                requestType.ToString()
+            )
+        );
+    }
 }
