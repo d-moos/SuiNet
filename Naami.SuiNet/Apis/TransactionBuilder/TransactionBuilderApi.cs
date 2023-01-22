@@ -1,6 +1,7 @@
 ﻿using Naami.SuiNet.Apis.TransactionBuilder.Requests;
 using Naami.SuiNet.JsonRpc;
 using Naami.SuiNet.Types;
+using Naami.SuiNet.Types.Numerics;
 
 namespace Naami.SuiNet.Apis.TransactionBuilder;
 
@@ -130,6 +131,47 @@ public class TransactionBuilderApi : ITransactionBuilderApi
             new PublishRequest(signer, compiledModules, gasBudget)
             {
                 Gas = gasObject
+            });
+    }
+
+    public Task<TransactionBytes> RequestAddDelegation(SuiAddress signer,
+        ObjectId[] coins,
+        SuiAddress validator,
+        U64 gasBudget,
+        U64? amount = null,
+        ObjectId? gasObject = null)
+    {
+        const string method = "sui_requestAddDelegation";
+        
+        return _jsonRpcClient.SendAsync<TransactionBytes, RequestAddDelegationRequest>(method,
+            new RequestAddDelegationRequest(signer, coins, validator, gasBudget)
+            {
+                Amount = amount,
+                GasObject = gasObject
+            });
+    }
+
+    public Task<TransactionBytes> RequestWithdrawDelegation(SuiAddress signer, ObjectId delegation, ObjectId stakedSui,
+        U64 gasBudget,
+        ObjectId? gasObject = null)
+    {
+        const string method = "sui_requestWithdrawDelegation";
+        return _jsonRpcClient.SendAsync<TransactionBytes, RequestWithdrawDelegationRequest>(method,
+            new RequestWithdrawDelegationRequest(signer, delegation, stakedSui, gasBudget)
+            {
+                GasObject = gasObject
+            });
+    }
+
+    public Task<TransactionBytes> RequestSwitchDelegation(SuiAddress signer, ObjectId delegation, ObjectId stakedSui,
+        SuiAddress newValidatorAddress,
+        U64 gasBudget, ObjectId? gasObject = null)
+    {
+        const string method = "sui_requestSwitchDelegation";
+        return _jsonRpcClient.SendAsync<TransactionBytes, RequestSwitchDelegationRequest>(method,
+            new RequestSwitchDelegationRequest(signer, delegation, stakedSui, newValidatorAddress, gasBudget)
+            {
+                GasObject = gasObject
             });
     }
 }

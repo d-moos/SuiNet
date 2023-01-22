@@ -1,4 +1,5 @@
 ﻿using Naami.SuiNet.Types;
+using Naami.SuiNet.Types.Numerics;
 
 namespace Naami.SuiNet.Apis.TransactionBuilder;
 
@@ -54,11 +55,37 @@ public interface ITransactionBuilderApi
         ulong gasBudget,
         ObjectId? gasObject = null
     );
-    
+
     public Task<TransactionBytes> Publish(
         SuiAddress signer,
         string[] compiledModules,
         ulong gasBudget,
+        ObjectId? gasObject = null
+    );
+
+    public Task<TransactionBytes> RequestAddDelegation(
+        SuiAddress signer,
+        ObjectId[] coins,
+        SuiAddress validator,
+        U64 gasBudget,
+        U64? amount = null,
+        ObjectId? gasObject = null
+    );
+
+    public Task<TransactionBytes> RequestWithdrawDelegation(
+        SuiAddress signer,
+        ObjectId delegation,
+        ObjectId stakedSui,
+        U64 gasBudget,
+        ObjectId? gasObject = null
+    );
+
+    public Task<TransactionBytes> RequestSwitchDelegation(
+        SuiAddress signer,
+        ObjectId delegation,
+        ObjectId stakedSui,
+        SuiAddress newValidatorAddress,
+        U64 gasBudget,
         ObjectId? gasObject = null
     );
 }
