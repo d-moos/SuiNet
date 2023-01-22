@@ -9,7 +9,7 @@ public class GovernanceApiSpecification
     [Test]
     public async Task Foo()
     {
-        var r = await _governanceApi.GetSuiSystemState();
+        var r = await _governanceApi.GetDelegatedStake(Utils.TestingSignerAddress);
         var i = 0;
     }
 }

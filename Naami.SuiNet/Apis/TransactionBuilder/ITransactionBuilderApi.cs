@@ -68,7 +68,7 @@ public interface ITransactionBuilderApi
         ObjectId[] coins,
         SuiAddress validator,
         U64 gasBudget,
-        U64? amount = null,
+        U64 amount,
         ObjectId? gasObject = null
     );
 

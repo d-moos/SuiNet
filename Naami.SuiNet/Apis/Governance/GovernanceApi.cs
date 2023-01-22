@@ -14,11 +14,14 @@ public class GovernanceApi : IGovernanceApi
         _jsonRpcClient = jsonRpcClient;
     }
 
-    public Task<DelegatedStake> GetDelegatedStake(SuiAddress owner)
+    public Task<DelegatedStake[]> GetDelegatedStake(SuiAddress owner)
     {
+        using var jsScope = JsConfig.BeginScope();
+        jsScope.TextCase = TextCase.SnakeCase;
+        
         const string method = "sui_getDelegatedStakes";
 
-        return _jsonRpcClient.SendAsync<DelegatedStake, GetDelegatedStakeRequest>(
+        return _jsonRpcClient.SendAsync<DelegatedStake[], GetDelegatedStakeRequest>(
             method,
             new GetDelegatedStakeRequest(owner)
         );

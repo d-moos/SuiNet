@@ -39,12 +39,12 @@ public readonly struct Owner
         ? _rawJsonString.FromJson<ObjectOwnership>() 
         : null;
     
-    public SharedOwnership? SharedOwnership => IsSharedOwnership(_rawJsonString) 
-        ? _rawJsonString.FromJson<SharedOwnership>() 
+    public SharedOwnership? SharedOwnership => IsSharedOwnership(_rawJsonString)
+        ? _rawJsonString.FromJson<SharedOwnership>()
         : null;
 
     private static bool IsAddressOwnership(string rawOwner) => rawOwner.Contains(Ownership.AddressOwner.ToString());
     private static bool IsObjectOwnership(string rawOwner) => rawOwner.Contains(Ownership.ObjectOwner.ToString());
-    private static bool IsSharedOwnership(string rawOwner) => rawOwner.Contains("initial_shared_version"); // TODO: camelCase
+    private static bool IsSharedOwnership(string rawOwner) => rawOwner.Contains("initial_shared_version"); // TODO: snake_case
     private static bool IsImmutableOwnership(string rawOwner) => rawOwner.Contains(Ownership.Immutable.ToString());
-};
+}

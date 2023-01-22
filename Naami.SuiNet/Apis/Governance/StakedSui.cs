@@ -6,9 +6,9 @@ namespace Naami.SuiNet.Apis.Governance;
 public record StakedSui(
     Uid Id,
     SuiAddress ValidatorAddress,
-    U64 PoolStatingEpoch,
+    U64 PoolStartingEpoch,
     U64 DelegationRequestEpoch,
-    Balance Principal
+    SuiTypes.Balance Principal
 )
 {
     public EpochId? SuiTokenLock { get; init; }

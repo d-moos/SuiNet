@@ -134,19 +134,19 @@ public class TransactionBuilderApi : ITransactionBuilderApi
             });
     }
 
-    public Task<TransactionBytes> RequestAddDelegation(SuiAddress signer,
+    public Task<TransactionBytes> RequestAddDelegation(
+        SuiAddress signer,
         ObjectId[] coins,
         SuiAddress validator,
         U64 gasBudget,
-        U64? amount = null,
+        U64 amount,
         ObjectId? gasObject = null)
     {
         const string method = "sui_requestAddDelegation";
         
         return _jsonRpcClient.SendAsync<TransactionBytes, RequestAddDelegationRequest>(method,
-            new RequestAddDelegationRequest(signer, coins, validator, gasBudget)
+            new RequestAddDelegationRequest(signer, coins, amount, validator, gasBudget)
             {
-                Amount = amount,
                 GasObject = gasObject
             });
     }
