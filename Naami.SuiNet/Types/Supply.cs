@@ -1,3 +1,5 @@
-﻿namespace Naami.SuiNet.Types;
+﻿using Naami.SuiNet.Types.Numerics;
 
-public record Supply(ulong Value);
+namespace Naami.SuiNet.Types;
+
+public record Supply(U64 Value);

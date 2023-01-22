@@ -1,14 +1,16 @@
-﻿namespace Naami.SuiNet.Types;
+﻿using Naami.SuiNet.Types.Numerics;
+
+namespace Naami.SuiNet.Types;
 
 public readonly struct EpochId
 {
-    private readonly ulong _epochId;
+    private readonly U64 _epochId;
 
-    public EpochId(ulong epochId)
+    public EpochId(U64 epochId)
     {
         _epochId = epochId;
     }
 
-    public static implicit operator EpochId(ulong epochId) => new(epochId);
-    public static implicit operator ulong(EpochId epochId) => epochId._epochId;
+    public static implicit operator EpochId(U64 epochId) => new(epochId);
+    public static implicit operator U64(EpochId epochId) => epochId._epochId;
 }
