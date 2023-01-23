@@ -8,7 +8,7 @@ using Naami.SuiNet.JsonRpc;
 using Naami.SuiNet.Types;
 using ServiceStack;
 
-namespace Naami.SuiNet.Examples.Capy;
+namespace Naami.SuiNet.Examples.Capy.Capy;
 
 public class CapyQueryClient : ICapyQueries
 {

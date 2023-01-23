@@ -1,3 +1,4 @@
+using Naami.SuiNet.Examples.Capy.ItemStore;
 using Naami.SuiNet.JsonRpc;
 
 namespace Naami.SuiNet.Examples.Capy.Test;

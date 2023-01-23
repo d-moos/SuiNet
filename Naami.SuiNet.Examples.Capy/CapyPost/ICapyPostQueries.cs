@@ -1,10 +1,11 @@
-﻿using Naami.SuiNet.Types;
+﻿using Naami.SuiNet.Examples.Capy.CapyPost.Types;
+using Naami.SuiNet.Types;
 
-namespace Naami.SuiNet.Examples.Capy;
+namespace Naami.SuiNet.Examples.Capy.CapyPost;
 
 public interface ICapyPostQueries
 {
-    public Task<CapyPost> GetPost();
+    public Task<Types.CapyPost> GetPost();
     public Task<GiftBox[]> GetGiftBoxes(SuiAddress owner);
     public Task<PremiumBox[]> GetPremiumBoxes(SuiAddress owner);
     public Task<PremiumTicket[]> GetPremiumTickets(SuiAddress owner);

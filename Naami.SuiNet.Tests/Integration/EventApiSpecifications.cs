@@ -1,6 +1,5 @@
 ﻿using Naami.SuiNet.Apis.Event;
 using Naami.SuiNet.Apis.Event.Filter;
-using Naami.SuiSdk.Tests;
 
 namespace Naami.SuiNet.Tests.Integration;
 

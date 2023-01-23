@@ -1,6 +1,7 @@
-﻿using Naami.SuiNet.Types.Numerics;
+﻿using Naami.SuiNet.Types.Delegation;
+using Naami.SuiNet.Types.Numerics;
 
-namespace Naami.SuiNet.Apis.Governance;
+namespace Naami.SuiNet.Types;
 
 public record Validator(
     ValidatorMetadata Metadata,

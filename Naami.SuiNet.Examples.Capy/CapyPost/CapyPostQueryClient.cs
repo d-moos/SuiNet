@@ -1,8 +1,9 @@
 ﻿using Naami.SuiNet.Apis.Read;
+using Naami.SuiNet.Examples.Capy.CapyPost.Types;
 using Naami.SuiNet.JsonRpc;
 using Naami.SuiNet.Types;
 
-namespace Naami.SuiNet.Examples.Capy;
+namespace Naami.SuiNet.Examples.Capy.CapyPost;
 
 public class CapyPostQueryClient : ICapyPostQueries
 {
@@ -22,9 +23,9 @@ public class CapyPostQueryClient : ICapyPostQueries
         _readApi = new ReadApi(jsonRpcClient);
     }
     
-    public async Task<CapyPost> GetPost()
+    public async Task<Types.CapyPost> GetPost()
     {
-        var response = await _readApi.GetObject<CapyPost>(_capyPostId);
+        var response = await _readApi.GetObject<Types.CapyPost>(_capyPostId);
         return response.ExistsResult!.Data.Fields!;
     }
 

@@ -1,5 +1,5 @@
 ﻿using Naami.SuiNet.Types;
 
-namespace Naami.SuiNet.Apis.Governance;
+namespace Naami.SuiNet.SuiTypes;
 
 public record Uid(ObjectId Id);

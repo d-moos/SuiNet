@@ -1,7 +1,7 @@
 ﻿using Naami.SuiNet.Types;
 using ServiceStack;
 
-namespace Naami.SuiSdk.Tests;
+namespace Naami.SuiNet.Tests;
 
 public class StructSerializationTests
 {

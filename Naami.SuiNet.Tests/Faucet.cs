@@ -1,6 +1,6 @@
 ﻿using ServiceStack;
 
-namespace Naami.SuiSdk.Tests;
+namespace Naami.SuiNet.Tests;
 
 public class Faucet
 {

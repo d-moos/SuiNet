@@ -1,6 +1,6 @@
 ﻿using Naami.SuiNet.Types.Numerics;
 
-namespace Naami.SuiNet.Examples.Capy;
+namespace Naami.SuiNet.Examples.Capy.ItemStore;
 
 public interface IItemStoreAdminCommands
 {

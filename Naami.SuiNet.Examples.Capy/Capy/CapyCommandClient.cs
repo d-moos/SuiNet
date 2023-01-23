@@ -4,7 +4,7 @@ using Naami.SuiNet.JsonRpc;
 using Naami.SuiNet.Signer;
 using Naami.SuiNet.Types;
 
-namespace Naami.SuiNet.Examples.Capy;
+namespace Naami.SuiNet.Examples.Capy.Capy;
 
 public class CapyCommandClient : ICapyCommands
 {

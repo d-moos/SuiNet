@@ -1,9 +1,9 @@
 ﻿using Naami.SuiNet.Examples.Capy.Capy.Types;
 
-namespace Naami.SuiNet.Examples.Capy;
+namespace Naami.SuiNet.Examples.Capy.ItemStore;
 
 public interface IItemStoreQueries
 {
-    public Task<ItemStore> GetStore();
+    public Task<Capy.Types.ItemStore> GetStore();
     public Task<ListedItem[]> GetAvailableItems();
 }

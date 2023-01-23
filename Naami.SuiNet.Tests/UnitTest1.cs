@@ -1,13 +1,7 @@
-using Naami.SuiNet.Apis.Read;
-using Naami.SuiNet.Signer;
 using Naami.SuiNet.Types;
-using Newtonsoft.Json;
-using NSec.Cryptography;
 using ServiceStack;
-using ServiceStack.Text;
-using SHA3.Net;
 
-namespace Naami.SuiSdk.Tests;
+namespace Naami.SuiNet.Tests;
 
 public class Tests
 {

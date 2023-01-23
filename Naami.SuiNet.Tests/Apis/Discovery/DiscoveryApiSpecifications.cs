@@ -1,9 +1,8 @@
 ﻿using Naami.SuiNet.Apis.Discovery;
-using Naami.SuiNet.JsonRpc;
 using Naami.SuiNet.Tests.Integration;
 using Shouldly;
 
-namespace Naami.SuiSdk.Tests.Apis.Discovery;
+namespace Naami.SuiNet.Tests.Apis.Discovery;
 
 public class DiscoveryApiSpecifications
 {

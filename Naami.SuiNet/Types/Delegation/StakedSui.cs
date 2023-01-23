@@ -1,7 +1,7 @@
-﻿using Naami.SuiNet.Types;
+﻿using Naami.SuiNet.SuiTypes;
 using Naami.SuiNet.Types.Numerics;
 
-namespace Naami.SuiNet.Apis.Governance;
+namespace Naami.SuiNet.Types.Delegation;
 
 public record StakedSui(
     Uid Id,

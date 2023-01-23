@@ -9,6 +9,9 @@ public class JsonRpcClient : IJsonRpcClient
 
     public JsonRpcClient(string baseUrl)
     {
+        JsConfig.IncludeTypeInfo = false;
+        JsConfig.ExcludeTypeInfo = true;
+        
         _baseUrl = baseUrl;
     }
 

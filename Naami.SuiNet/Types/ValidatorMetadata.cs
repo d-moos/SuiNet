@@ -1,7 +1,6 @@
-﻿using Naami.SuiNet.Types;
-using Naami.SuiNet.Types.Numerics;
+﻿using Naami.SuiNet.Types.Numerics;
 
-namespace Naami.SuiNet.Apis.Governance;
+namespace Naami.SuiNet.Types;
 
 public record ValidatorMetadata(
     SuiAddress SuiAddress,

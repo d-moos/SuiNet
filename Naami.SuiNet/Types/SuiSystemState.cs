@@ -1,7 +1,9 @@
-﻿using Naami.SuiNet.Types;
+﻿using Naami.SuiNet.SuiTypes;
+using Naami.SuiNet.Types.Delegation;
 using Naami.SuiNet.Types.Numerics;
+using Naami.SuiNet.Types.Structures;
 
-namespace Naami.SuiNet.Apis.Governance;
+namespace Naami.SuiNet.Types;
 
 public record SuiSystemState(
     Uid Info,

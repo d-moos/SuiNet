@@ -20,25 +20,6 @@ public class QuorumApi : IQuorumApi
         string base64Signature,
         string publicKey,
         ExecuteTransactionRequestType requestType
-    ) => _client.SendAsync<
-        SuiExecuteTransactionResponse,
-        ExecuteTransactionRequest
-    >(
-        "sui_executeTransaction",
-        new ExecuteTransactionRequest(
-            base64TxBytes,
-            signatureScheme.ToString(),
-            base64Signature,
-            publicKey,
-            requestType.ToString()
-        ));
-
-    public Task<SuiExecuteTransactionResponse> ExecuteTransactionSerializedSignature(
-        string base64TxBytes,
-        SignatureScheme signatureScheme,
-        string base64Signature,
-        string publicKey,
-        ExecuteTransactionRequestType requestType
     )
     {
         var sigBytes = Convert.FromBase64String(base64Signature);
@@ -53,7 +34,7 @@ public class QuorumApi : IQuorumApi
             SuiExecuteTransactionResponse,
             ExecuteTransactionSerializedSignatureRequest
         >(
-            "sui_executeTransactionSerializedSig",
+            "sui_executeTransaction",
             new ExecuteTransactionSerializedSignatureRequest(
                 base64TxBytes,
                 serializedSignature,

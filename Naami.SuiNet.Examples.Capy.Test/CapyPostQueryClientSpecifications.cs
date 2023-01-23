@@ -1,4 +1,5 @@
-﻿using Naami.SuiNet.JsonRpc;
+﻿using Naami.SuiNet.Examples.Capy.CapyPost;
+using Naami.SuiNet.JsonRpc;
 
 namespace Naami.SuiNet.Examples.Capy.Test;
 

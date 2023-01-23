@@ -1,3 +1,3 @@
-﻿namespace Naami.SuiNet.Apis.Governance;
+﻿namespace Naami.SuiNet.Types.Structures;
 
 public record VecMap<K, V>(Entry<K, V>[] Contents);

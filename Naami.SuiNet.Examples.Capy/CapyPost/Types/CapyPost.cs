@@ -1,5 +1,5 @@
 ﻿using Naami.SuiNet.Extensions.ModuleTypes.Sui;
 
-namespace Naami.SuiNet.Examples.Capy;
+namespace Naami.SuiNet.Examples.Capy.CapyPost.Types;
 
 public record CapyPost(Uid Id, Balance Balance);

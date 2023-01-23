@@ -1,6 +1,7 @@
 ﻿using System.Security;
 using System.Text;
 using Naami.SuiNet.Types;
+using Naami.SuiNet.Types.Delegation;
 
 namespace Naami.SuiNet.Apis.Governance;
 

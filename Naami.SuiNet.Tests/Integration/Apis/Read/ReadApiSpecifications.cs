@@ -1,6 +1,5 @@
 using System.Text;
 using Naami.SuiNet.Types;
-using Naami.SuiSdk.Tests;
 using Shouldly;
 
 namespace Naami.SuiNet.Tests.Integration.Apis.Read;

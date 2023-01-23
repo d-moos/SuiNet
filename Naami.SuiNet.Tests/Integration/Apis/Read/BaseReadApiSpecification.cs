@@ -3,7 +3,6 @@ using Naami.SuiNet.Apis.Read;
 using Naami.SuiNet.Apis.TransactionBuilder;
 using Naami.SuiNet.Signer;
 using Naami.SuiNet.Types;
-using Naami.SuiSdk.Tests;
 
 namespace Naami.SuiNet.Tests.Integration.Apis.Read;
 

@@ -12,7 +12,7 @@ public class DelegationSpecifications
     [Test]
     public async Task RequestAddDelegation()
     {
-        const string coinObjectId = "0xb31550a25df6a926bc7991cddd14c0ce44e131a0";
+        const string coinObjectId = "0xaca9f647efdae06063520d7045bd281096c8cbf0";
 
         var governanceApi = new GovernanceApi(Utils.JsonRpcClient.Value);
         var builder = new TransactionBuilderApi(Utils.JsonRpcClient.Value);
@@ -35,13 +35,22 @@ public class DelegationSpecifications
             Utils.TestingKeyPair
         );
 
-        await quorumApi.ExecuteTransactionSerializedSignature(
+        await quorumApi.ExecuteTransaction(
             tx.TxBytes,
             SignatureScheme.ED25519,
             signature,
             Convert.ToBase64String(Utils.TestingKeyPair.PublicKey),
             ExecuteTransactionRequestType.WaitForEffectsCert
         );
+    }
+    
+    [Test]
+    public async Task GetDelegation()
+    {
+        var governanceApi = new GovernanceApi(Utils.JsonRpcClient.Value);
+        var delegation = await governanceApi.GetDelegatedStake(Utils.TestingSignerAddress);
+
+        var i = 0;
     }
 
     [Test]
@@ -68,7 +77,7 @@ public class DelegationSpecifications
             Utils.TestingKeyPair
         );
 
-        await quorumApi.ExecuteTransactionSerializedSignature(
+        await quorumApi.ExecuteTransaction(
             tx.TxBytes,
             SignatureScheme.ED25519,
             signature,
@@ -99,7 +108,7 @@ public class DelegationSpecifications
             Utils.TestingKeyPair
         );
 
-        await quorumApi.ExecuteTransactionSerializedSignature(
+        await quorumApi.ExecuteTransaction(
             tx.TxBytes,
             SignatureScheme.ED25519,
             signature,

@@ -1,6 +1,7 @@
 ﻿using Naami.SuiNet.Types.Numerics;
+using Naami.SuiNet.Types.Structures;
 
-namespace Naami.SuiNet.Apis.Governance;
+namespace Naami.SuiNet.Types;
 
 public record ValidatorSet(
     U64 ValidatorStake,

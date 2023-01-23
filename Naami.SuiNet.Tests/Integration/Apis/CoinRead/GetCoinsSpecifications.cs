@@ -1,5 +1,4 @@
-﻿using Naami.SuiSdk.Tests;
-using Shouldly;
+﻿using Shouldly;
 
 namespace Naami.SuiNet.Tests.Integration.Apis.CoinRead;
 

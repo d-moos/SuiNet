@@ -1,7 +1,6 @@
 ﻿using System.Runtime.Serialization;
-using Naami.SuiNet.Types;
 
-namespace Naami.SuiNet.Apis.Governance;
+namespace Naami.SuiNet.Types;
 
 [DataContract]
 public record CommitteeInfoResponse([property: DataMember(Name="epoch")]EpochId Epoch)

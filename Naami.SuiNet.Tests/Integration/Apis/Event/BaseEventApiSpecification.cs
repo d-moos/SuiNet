@@ -1,5 +1,4 @@
 ﻿using Naami.SuiNet.Apis.Event;
-using Naami.SuiSdk.Tests;
 
 namespace Naami.SuiNet.Tests.Integration.Apis.Event;
 

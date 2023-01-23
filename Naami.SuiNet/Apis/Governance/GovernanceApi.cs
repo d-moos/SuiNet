@@ -1,6 +1,7 @@
 ﻿using Naami.SuiNet.Apis.Governance.Requests;
 using Naami.SuiNet.JsonRpc;
 using Naami.SuiNet.Types;
+using Naami.SuiNet.Types.Delegation;
 using ServiceStack.Text;
 
 namespace Naami.SuiNet.Apis.Governance;

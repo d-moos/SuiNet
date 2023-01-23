@@ -4,7 +4,7 @@ using Naami.SuiNet.Extensions.ApiStreams;
 using Naami.SuiNet.JsonRpc;
 using Naami.SuiNet.Types;
 
-namespace Naami.SuiNet.Examples.Capy;
+namespace Naami.SuiNet.Examples.Capy.ItemStore;
 
 public class ItemStoreQueryClient : IItemStoreQueries
 {
@@ -22,9 +22,9 @@ public class ItemStoreQueryClient : IItemStoreQueries
         _readApi = new ReadApi(jsonRpcClient);
     }
     
-    public async Task<ItemStore> GetStore()
+    public async Task<Capy.Types.ItemStore> GetStore()
     {
-        var response = await _readApi.GetObject<ItemStore>(_itemStoreId);
+        var response = await _readApi.GetObject<Capy.Types.ItemStore>(_itemStoreId);
         return response.ExistsResult!.Data.Fields!;
     }
 
