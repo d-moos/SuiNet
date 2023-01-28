@@ -16,4 +16,16 @@ public class GetBalancesSpecifications : BaseCoinReadApiSpecification
         balances[0].CoinObjectCount.ShouldBe<uint>(2);
         balances[0].TotalBalance.ShouldBe<U128>("20");
     }
+    
+    [Test]
+    public async Task GetAllBalances_Owner_CoinType()
+    {
+        await MintTestingCoins(2, "10");
+
+        var balances = await CoinReadApi.GetAllBalances(Utils.TestingSignerAddress);
+        balances.Length.ShouldBeGreaterThan(0);
+
+        balances[0].CoinObjectCount.ShouldBe<uint>(2);
+        balances[0].TotalBalance.ShouldBe<U128>("20");
+    }
 }

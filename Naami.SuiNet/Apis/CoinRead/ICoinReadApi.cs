@@ -11,6 +11,7 @@ public interface ICoinReadApi
 
     public Task<Balance[]> GetBalances(SuiAddress owner, SuiObjectType coinType);
     public Task<Balance[]> GetBalances(SuiAddress owner);
+    public Task<Balance[]> GetAllBalances(SuiAddress owner);
 
     public Task<Supply> GetTotalSupply(SuiObjectType coinType);
     public Task<CoinMetadata> GetCoinMetaData(SuiObjectType coinType);

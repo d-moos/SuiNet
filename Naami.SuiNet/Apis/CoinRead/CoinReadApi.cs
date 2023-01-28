@@ -63,6 +63,12 @@ public class CoinReadApi : ICoinReadApi
         const string method = "sui_getBalance";
         return _jsonRpcClient.SendAsync<Balance[], GetBalanceRequest>(method, new GetBalanceRequest(owner));
     }
+    
+    public Task<Balance[]> GetAllBalances(SuiAddress owner)
+    {
+        const string method = "sui_getAllBalances";
+        return _jsonRpcClient.SendAsync<Balance[], GetAllBalanceRequest>(method, new GetAllBalanceRequest(owner));
+    }
 
     public Task<Supply> GetTotalSupply(SuiObjectType coinType)
     {

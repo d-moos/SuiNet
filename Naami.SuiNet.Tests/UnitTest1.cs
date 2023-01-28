@@ -1,3 +1,5 @@
+using Naami.SuiNet.Apis.Read;
+using Naami.SuiNet.Tests.Integration;
 using Naami.SuiNet.Types;
 using ServiceStack;
 
@@ -8,6 +10,15 @@ public class Tests
     [SetUp]
     public void Setup()
     {
+    }
+
+    [Test]
+    public async Task Tester()
+    {
+        var read = new ReadApi(Utils.JsonRpcClient.Value);
+        var r = await read.GetRawObject("0x02");
+
+        var i = 0;
     }
 
     [Test]
