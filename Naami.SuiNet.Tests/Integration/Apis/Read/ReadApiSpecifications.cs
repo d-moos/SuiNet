@@ -55,4 +55,11 @@ public class ReadApiSpecifications : BaseReadApiSpecification
         var result = await ReadApi.GetTotalTransactionNumber();
         result.ShouldNotBe(default);
     }
+
+    [Test]
+    public async Task GetTransactionsInRange()
+    {
+        var result = await ReadApi.GetTransactionsInRange(0, 1000);
+        result.Length.ShouldBeGreaterThan(0);
+    }
 }

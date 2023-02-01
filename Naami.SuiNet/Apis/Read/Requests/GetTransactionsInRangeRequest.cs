@@ -6,6 +6,6 @@ namespace Naami.SuiNet.Apis.Read.Requests;
 [DataContract]
 public record GetTransactionsInRangeRequest(
     [property: DataMember(Name = "start")]
-    SequenceNumber Start,
+    ulong Start,
     [property: DataMember(Name = "end")]
-    SequenceNumber End);
+    ulong End);
