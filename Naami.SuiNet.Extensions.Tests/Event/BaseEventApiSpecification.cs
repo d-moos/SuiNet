@@ -11,7 +11,7 @@ public class EventApiSpecification : BaseEventApiSpecification
     public async Task Foo()
     {
         var r = EventApi.GetEventStream(
-            new MoveEventEventFilter("0x02::devnet_nft::MintNFTEvent"));
+            new MoveEventEventQuery("0x02::devnet_nft::MintNFTEvent"));
         await foreach (var suiEventEnvelopes in r)
         {
             var i = 0;

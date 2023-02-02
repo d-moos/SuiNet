@@ -25,28 +25,28 @@ public interface IEventApi
         bool isDescending = false
     );
 
-    public Task<EventPage> GetEvents<TEventFilter>(
-        TEventFilter query,
+    public Task<EventPage> GetEvents<TEventQuery>(
+        TEventQuery query,
         bool isDescending = false
-    ) where TEventFilter : IEventFilter;
+    ) where TEventQuery : IEventQuery;
 
-    public Task<EventPage> GetEvents<TEventFilter>(
-        TEventFilter query,
+    public Task<EventPage> GetEvents<TEventQuery>(
+        TEventQuery query,
         uint limit,
         bool isDescending = false
-    ) where TEventFilter : IEventFilter;
+    ) where TEventQuery : IEventQuery;
 
-    public Task<EventPage> GetEvents<TEventFilter>(
-        TEventFilter query,
+    public Task<EventPage> GetEvents<TEventQuery>(
+        TEventQuery query,
         EventId cursor,
         bool isDescending = false
-    ) where TEventFilter : IEventFilter;
+    ) where TEventQuery : IEventQuery;
 
     
-    public Task<EventPage> GetEvents<TEventFilter>(
-        TEventFilter query,
+    public Task<EventPage> GetEvents<TEventQuery>(
+        TEventQuery query,
         EventId cursor,
         uint limit,
         bool isDescending = false
-    ) where TEventFilter : IEventFilter;
+    ) where TEventQuery : IEventQuery;
 }

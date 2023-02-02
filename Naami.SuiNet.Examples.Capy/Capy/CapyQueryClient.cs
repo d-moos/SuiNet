@@ -70,7 +70,7 @@ public class CapyQueryClient : ICapyQueries
 
     public async IAsyncEnumerable<CapyBorn> StreamCapyBornEvents(EventId? cursor = null)
     {
-        var filter = new MoveEventEventFilter(new SuiObjectType($"{_packageId}::capy::CapyBorn"));
+        var filter = new MoveEventEventQuery(new SuiObjectType($"{_packageId}::capy::CapyBorn"));
         await foreach (var suiEventEnvelopes in _eventApi.GetEventStream(filter, cursor))
         {
             foreach (var suiEvent in suiEventEnvelopes)

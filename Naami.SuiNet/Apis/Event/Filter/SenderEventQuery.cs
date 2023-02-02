@@ -2,4 +2,4 @@
 
 namespace Naami.SuiNet.Apis.Event.Filter;
 
-public record SenderEventFilter(SuiAddress Sender) : IEventFilter;
+public record SenderEventQuery(SuiAddress Sender) : IEventQuery;

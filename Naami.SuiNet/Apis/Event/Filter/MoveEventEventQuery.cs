@@ -2,4 +2,4 @@
 
 namespace Naami.SuiNet.Apis.Event.Filter;
 
-public record ObjectEventFilter(ObjectId Object) : IEventFilter;
+public record MoveEventEventQuery(SuiObjectType MoveEvent) : IEventQuery;

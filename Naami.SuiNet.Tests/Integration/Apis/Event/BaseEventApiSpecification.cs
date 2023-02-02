@@ -9,7 +9,7 @@ public class EventApiSpecification : BaseEventApiSpecification
     public async Task Foo()
     {
         var r = await EventApi.GetEvents(
-            new MoveEventEventFilter("0x05ec326f79d5edfd6156ac3c734a418627f091cb::event::PoolCreatedEvent"));
+            new MoveEventEventQuery("0x05ec326f79d5edfd6156ac3c734a418627f091cb::event::PoolCreatedEvent"));
         var i = 0;
     }
 }

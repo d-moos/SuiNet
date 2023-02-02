@@ -27,7 +27,7 @@ public static class EventApiExtensions
         TEventFilter query,
         int pageSize = 100,
         bool isDescending = false
-    ) where TEventFilter : IEventFilter
+    ) where TEventFilter : IEventQuery
     {
         var page = await eventApi.GetEvents(query, (uint)pageSize, isDescending);
         yield return page.Data;
@@ -62,7 +62,7 @@ public static class EventApiExtensions
         EventId initialCursor,
         int pageSize = 100,
         bool isDescending = false
-    ) where TEventFilter : IEventFilter
+    ) where TEventFilter : IEventQuery
     {
         var page = await eventApi.GetEvents(query, initialCursor, (uint)pageSize, isDescending);
         yield return page.Data;

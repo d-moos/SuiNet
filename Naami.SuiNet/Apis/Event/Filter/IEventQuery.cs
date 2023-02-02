@@ -1,5 +1,5 @@
 ﻿namespace Naami.SuiNet.Apis.Event.Filter;
 
-public interface IEventFilter
+public interface IEventQuery
 {
 }

@@ -9,7 +9,7 @@ public record GetEventsRequest<TEventFilter>(
     [property: DataMember(Name = "query")] TEventFilter Query,
     [property: DataMember(Name = "descending_order")]
     bool DescendingOrder = false
-) where TEventFilter : IEventFilter
+) where TEventFilter : IEventQuery
 {
     [DataMember(Name = "cursor")] public EventId? Cursor;
     [DataMember(Name = "limit")] public uint? Limit;

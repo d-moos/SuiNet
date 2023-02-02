@@ -38,32 +38,32 @@ public class EventApi : IEventApi
             Cursor = cursor
         });
 
-    public Task<EventPage> GetEvents<TEventFilter>(TEventFilter query, bool isDescending = false)
-        where TEventFilter : IEventFilter
-        => _jsonRpcClient.SendAsync<EventPage, GetEventsRequest<TEventFilter>>(method,
-            new GetEventsRequest<TEventFilter>(query, isDescending));
+    public Task<EventPage> GetEvents<TEventQuery>(TEventQuery query, bool isDescending = false)
+        where TEventQuery : IEventQuery
+        => _jsonRpcClient.SendAsync<EventPage, GetEventsRequest<TEventQuery>>(method,
+            new GetEventsRequest<TEventQuery>(query, isDescending));
 
-    public Task<EventPage> GetEvents<TEventFilter>(TEventFilter query, uint limit, bool isDescending = false)
-        where TEventFilter : IEventFilter
-        => _jsonRpcClient.SendAsync<EventPage, GetEventsRequest<TEventFilter>>(method,
-            new GetEventsRequest<TEventFilter>(query, isDescending)
+    public Task<EventPage> GetEvents<TEventQuery>(TEventQuery query, uint limit, bool isDescending = false)
+        where TEventQuery : IEventQuery
+        => _jsonRpcClient.SendAsync<EventPage, GetEventsRequest<TEventQuery>>(method,
+            new GetEventsRequest<TEventQuery>(query, isDescending)
             {
                 Limit = limit
             });
 
-    public Task<EventPage> GetEvents<TEventFilter>(TEventFilter query, EventId cursor, bool isDescending = false)
-        where TEventFilter : IEventFilter
-        => _jsonRpcClient.SendAsync<EventPage, GetEventsRequest<TEventFilter>>(method,
-            new GetEventsRequest<TEventFilter>(query, isDescending)
+    public Task<EventPage> GetEvents<TEventQuery>(TEventQuery query, EventId cursor, bool isDescending = false)
+        where TEventQuery : IEventQuery
+        => _jsonRpcClient.SendAsync<EventPage, GetEventsRequest<TEventQuery>>(method,
+            new GetEventsRequest<TEventQuery>(query, isDescending)
             {
                 Cursor = cursor
             });
 
-    public Task<EventPage> GetEvents<TEventFilter>(TEventFilter query, EventId cursor, uint limit,
+    public Task<EventPage> GetEvents<TEventQuery>(TEventQuery query, EventId cursor, uint limit,
         bool isDescending = false)
-        where TEventFilter : IEventFilter
-        => _jsonRpcClient.SendAsync<EventPage, GetEventsRequest<TEventFilter>>(method,
-            new GetEventsRequest<TEventFilter>(query, isDescending)
+        where TEventQuery : IEventQuery
+        => _jsonRpcClient.SendAsync<EventPage, GetEventsRequest<TEventQuery>>(method,
+            new GetEventsRequest<TEventQuery>(query, isDescending)
             {
                 Limit = limit,
                 Cursor = cursor
