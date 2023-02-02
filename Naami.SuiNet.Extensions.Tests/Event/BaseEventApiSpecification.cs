@@ -1,5 +1,7 @@
 ﻿using Naami.SuiNet.Apis.Event;
 using Naami.SuiNet.Apis.Event.Filter;
+using Naami.SuiNet.Extensions.ApiStreams;
+using Naami.SuiNet.Extensions.Tests;
 
 namespace Naami.SuiNet.Tests.Integration.Apis.Event;
 
@@ -8,9 +10,12 @@ public class EventApiSpecification : BaseEventApiSpecification
     [Test]
     public async Task Foo()
     {
-        var r = await EventApi.GetEvents(
-            new MoveEventEventFilter("0x05ec326f79d5edfd6156ac3c734a418627f091cb::event::PoolCreatedEvent"));
-        var i = 0;
+        var r = EventApi.GetEventStream(
+            new MoveEventEventFilter("0x02::devnet_nft::MintNFTEvent"));
+        await foreach (var suiEventEnvelopes in r)
+        {
+            var i = 0;
+        }
     }
 }
 

@@ -22,7 +22,7 @@ public class CapyQueryClientSpecifications
     [Test]
     public async Task StreamCapyBornEvents()
     {
-        await foreach (var capyBornEvent in _capyQueryClient.StreamCapyBornEvents(new EventId(263542, 45)))
+        await foreach (var capyBornEvent in _capyQueryClient.StreamCapyBornEvents(new EventId("", 45)))
         {
             var i = 0;
         }
