@@ -1,7 +1,16 @@
-﻿namespace Naami.SuiNet.JsonRpc;
+﻿using System.Runtime.Serialization;
 
-public record Response<TResult>(string JsonRpc, string Id)
+namespace Naami.SuiNet.JsonRpc;
+
+[DataContract]
+public record Response<TResult>(
+    [property: DataMember(Name = "jsonrpc")]
+    string JsonRpc,
+    [property: DataMember(Name = "id")] string Id
+)
 {
+    [property: DataMember(Name = "result")]
     public TResult? Result { get; set; }
-    public object? Error { get; set; }
+
+    [property: DataMember(Name = "error")] public object? Error { get; set; }
 }

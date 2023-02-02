@@ -1,5 +1,5 @@
 ﻿using Naami.SuiNet.Apis.Event;
-using Naami.SuiNet.Apis.Event.Filter;
+using Naami.SuiNet.Apis.Event.Query;
 using Naami.SuiNet.Types;
 
 namespace Naami.SuiNet.Extensions.ApiStreams;

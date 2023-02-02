@@ -1,4 +1,4 @@
-﻿using Naami.SuiNet.Apis.Event.Filter;
+﻿using Naami.SuiNet.Apis.Event.Query;
 using Naami.SuiNet.Apis.Event.Requests;
 using Naami.SuiNet.JsonRpc;
 using Naami.SuiNet.Types;

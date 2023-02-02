@@ -1,7 +1,7 @@
 ﻿using System.Runtime.Serialization;
 using Naami.SuiNet.Types;
 
-namespace Naami.SuiNet.Apis.Event.Filter;
+namespace Naami.SuiNet.Apis.Event.Query;
 
 [DataContract]
 public record MoveModule(

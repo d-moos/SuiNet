@@ -1,5 +1,5 @@
 ﻿using Naami.SuiNet.Apis.Event;
-using Naami.SuiNet.Apis.Event.Filter;
+using Naami.SuiNet.Apis.Event.Query;
 using Naami.SuiNet.Apis.Read;
 using Naami.SuiNet.Examples.Capy.Capy.Events;
 using Naami.SuiNet.Examples.Capy.Capy.Types;

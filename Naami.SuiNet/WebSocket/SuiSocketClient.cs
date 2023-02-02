@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Extensions.Logging;
+using Naami.SuiNet.Apis.Event.SocketApi.Filter;
 using Naami.SuiNet.JsonRpc;
 using Naami.SuiNet.Types.Events;
 using Naami.SuiNet.Types.Transactions;
@@ -10,7 +11,9 @@ namespace Naami.SuiNet.WebSocket;
 
 public interface ISuiSocketClient
 {
+    public delegate void TransactionReceived(SuiEvent suiEvent);
     public delegate void EventReceived(SuiEvent suiEvent);
+    public event TransactionReceived? OnTransactionReceived;
     public event EventReceived? OnEventReceived;
     
     public Task StartAsync();
@@ -23,6 +26,7 @@ public class SuiSocketClient : IDisposable, ISuiSocketClient
     private readonly ILogger<SuiSocketClient> _logger;
 
 
+    public event ISuiSocketClient.TransactionReceived? OnTransactionReceived;
     public event ISuiSocketClient.EventReceived? OnEventReceived;
 
     public SuiSocketClient(string rpcNodeUrl, ILogger<SuiSocketClient> logger)
