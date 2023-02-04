@@ -11,11 +11,11 @@ public class ReadApiSpecifications : BaseReadApiSpecification
     {
         var parsedObject = await ReadApi.GetObject<MyObject>(ObjectId);
         parsedObject.ObjectStatus.ShouldBe(ObjectStatus.Exists);
-
+        
         parsedObject.ExistsResult!.Owner.AddressOwnership.AddressOwner.ShouldBe(Utils.TestingSignerAddress);
         parsedObject.ExistsResult!.Data.Fields!.Bar.ShouldBe<byte>(2);
     }
-    
+
     [Test]
     public async Task GetRawObject()
     {
@@ -34,7 +34,7 @@ public class ReadApiSpecifications : BaseReadApiSpecification
         var childObject = await ReadApi.GetObject<ChildObject>(dynamicFieldPage.Data[0].ObjectId);
         childObject.ExistsResult!.Data.Fields!.Foo.ShouldBe<byte>(123);
     }
-    
+
     [Test]
     public async Task GetDynamicFieldObject()
     {
@@ -48,7 +48,7 @@ public class ReadApiSpecifications : BaseReadApiSpecification
     {
         var transaction = await ReadApi.GetTransaction(TransactionDigest);
     }
-    
+
     [Test]
     public async Task GetTotalTransactionNumber()
     {
@@ -61,5 +61,14 @@ public class ReadApiSpecifications : BaseReadApiSpecification
     {
         var result = await ReadApi.GetTransactionsInRange(0, 1000);
         result.Length.ShouldBeGreaterThan(0);
+    }
+    
+    [Test]
+    public async Task GetTransactions()
+    {
+        var result = await ReadApi.GetTransactionsInRange(0, 5);
+        var transactions = await ReadApi.GetTransactions(result);
+
+        transactions.Length.ShouldBe(5);
     }
 }

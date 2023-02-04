@@ -11,7 +11,7 @@ public class JsonRpcClient : IJsonRpcClient
     {
         JsConfig.IncludeTypeInfo = false;
         JsConfig.ExcludeTypeInfo = true;
-        
+
         _baseUrl = baseUrl;
     }
 
@@ -23,7 +23,7 @@ public class JsonRpcClient : IJsonRpcClient
         {
             Params = payload
         };
-        
+
         var responseJson = await _baseUrl.PostJsonToUrlAsync(request);
 
         var response = responseJson.FromJson<Response<TResult>>();
@@ -36,7 +36,7 @@ public class JsonRpcClient : IJsonRpcClient
 
         return response.Result!;
     }
-    
+
     public async Task<TResult> SendAsync<TResult>(string method)
     {
         var id = Guid.NewGuid().ToString();
@@ -45,7 +45,7 @@ public class JsonRpcClient : IJsonRpcClient
         {
             Params = null
         };
-        
+
         var responseJson = await _baseUrl.PostJsonToUrlAsync(request);
 
         var response = responseJson.FromJson<Response<TResult>>();
@@ -59,10 +59,21 @@ public class JsonRpcClient : IJsonRpcClient
         return response.Result!;
     }
 
-    public async Task<Response<TResult>[]> SendBatchAsync<TResult>(BatchRequest request)
+    public async Task<TResult[]> SendBatchAsync<TResult, TRequest>(string method, TRequest[] payloads)
     {
-        var result = await _baseUrl.PostJsonToUrlAsync(request.Requests);
-        
-        throw new NotImplementedException();
+        if (payloads.Length > 30)
+        {
+            throw new Exception("max batch request size is 30");
+        }
+
+        var requests = payloads.Select(x => new Request<TRequest>(method, Guid.NewGuid().ToString())
+        {
+            Params = x
+        }).ToArray();
+
+        var responseJson = await _baseUrl.PostJsonToUrlAsync(requests);
+        var response = responseJson.FromJson<Response<TResult>[]>();
+
+        return response.Where(x => x.Error == null).Select(x => x.Result!).ToArray();
     }
 }

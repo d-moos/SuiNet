@@ -42,6 +42,16 @@ public class ReadApi : IReadApi
             new GetObjectRequest(objectId));
     }
 
+    public async Task<SuiObjectReadResult<SuiParsedData<T>>[]> GetObjects<T>(params ObjectId[] objectId)
+    {
+        const string method = "sui_getObject";
+        var response =
+            await _jsonRpcClient.SendBatchAsync<SuiObjectReadResult<SuiParsedData<T>>, GetObjectRequest>(method,
+                objectId.Select(x => new GetObjectRequest(x)).ToArray());
+
+        return response;
+    }
+
     public Task<SuiObjectReadResult<SuiParsedData>> GetObject(ObjectId objectId)
     {
         const string method = "sui_getObject";
@@ -81,6 +91,16 @@ public class ReadApi : IReadApi
             new GetTransactionRequest(digest));
     }
 
+    public async Task<SuiTransactionResponse[]> GetTransactions(params TransactionDigest[] digest)
+    {
+        const string method = "sui_getTransaction";
+        var response =
+            await _jsonRpcClient.SendBatchAsync<SuiTransactionResponse, GetTransactionRequest>(method,
+                digest.Select(x => new GetTransactionRequest(x)).ToArray());
+
+        return response;
+    }
+
     public Task<DynamicFieldPage> GetDynamicFields(ObjectId parentObjectId, ObjectId? cursor = null, uint? limit = null)
     {
         const string method = "sui_getDynamicFields";
@@ -96,10 +116,10 @@ public class ReadApi : IReadApi
     public Task<SuiObjectReadResult<SuiParsedData<T>>> GetDynamicFieldObject<T>(ObjectId parentObjectId, byte[] field)
     {
         const string method = "sui_getDynamicFieldObject";
-        
+
         var stringValues = field.Select(x => $"{x}u8");
         var v = $"vector[{string.Join(", ", stringValues)}]";
-        
+
 
         return _jsonRpcClient.SendAsync<SuiObjectReadResult<SuiParsedData<T>>, GetDynamicFieldObjectRequest>(method,
             new GetDynamicFieldObjectRequest(parentObjectId, v)

@@ -1,3 +1,4 @@
+using Naami.SuiNet.Types;
 using Shouldly;
 
 namespace Naami.SuiNet.Tests.Integration.Apis.CoinRead;

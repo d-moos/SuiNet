@@ -82,4 +82,15 @@ public class CoinReadApi : ICoinReadApi
         return _jsonRpcClient.SendAsync<CoinMetadata, GetCoinMetadataRequest>(method,
             new GetCoinMetadataRequest(coinType));
     }
+
+    public async Task<CoinMetadata[]> GetCoinMetaDatas(params SuiObjectType[] coinTypes)
+    {
+        const string method = "sui_getCoinMetadata";
+        var response =
+            await _jsonRpcClient.SendBatchAsync<CoinMetadata, GetCoinMetadataRequest>(method,
+                coinTypes.Select(x => new GetCoinMetadataRequest(x)).ToArray());
+
+        return response;
+        
+    }
 }

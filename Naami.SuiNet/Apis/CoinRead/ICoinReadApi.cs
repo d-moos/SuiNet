@@ -15,4 +15,5 @@ public interface ICoinReadApi
 
     public Task<Supply> GetTotalSupply(SuiObjectType coinType);
     public Task<CoinMetadata> GetCoinMetaData(SuiObjectType coinType);
+    public Task<CoinMetadata[]> GetCoinMetaDatas(params SuiObjectType[] coinTypes);
 }
