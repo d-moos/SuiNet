@@ -61,11 +61,6 @@ public class JsonRpcClient : IJsonRpcClient
 
     public async Task<TResult[]> SendBatchAsync<TResult, TRequest>(string method, TRequest[] payloads)
     {
-        if (payloads.Length > 30)
-        {
-            throw new Exception("max batch request size is 30");
-        }
-
         var requests = payloads.Select(x => new Request<TRequest>(method, Guid.NewGuid().ToString())
         {
             Params = x
