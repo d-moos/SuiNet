@@ -94,9 +94,12 @@ public class ReadApi : IReadApi
     public async Task<SuiTransactionResponse[]> GetTransactions(params TransactionDigest[] digest)
     {
         const string method = "sui_getTransaction";
+        var payload = digest.Select(x => new GetTransactionRequest(x)).ToArray();
         var response =
-            await _jsonRpcClient.SendBatchAsync<SuiTransactionResponse, GetTransactionRequest>(method,
-                digest.Select(x => new GetTransactionRequest(x)).ToArray());
+            await _jsonRpcClient.SendBatchAsync<
+                SuiTransactionResponse,
+                GetTransactionRequest
+            >(method,  payload);
 
         return response;
     }

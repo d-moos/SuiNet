@@ -15,5 +15,8 @@ public class EventSocketApiSpecification : BaseEventSocketApiSpecification
                     new ModuleFilter("devnet_nft")
                 }));
         r.Subscribe(x => Console.WriteLine(x.Id));
+        
+
+        await Task.Delay(100000);
     }
 }

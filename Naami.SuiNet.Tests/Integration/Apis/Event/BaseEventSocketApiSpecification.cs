@@ -8,6 +8,6 @@ public abstract class BaseEventSocketApiSpecification
 
     public BaseEventSocketApiSpecification()
     {
-        EventSocketApi = new EventSocketApi("wss://sui-fullnode.naami.fi");
+        EventSocketApi = new EventSocketApi("wss://fullnode.devnet.sui.io");
     }
 }

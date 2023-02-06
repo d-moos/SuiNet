@@ -14,7 +14,10 @@ public record SuiTransactionKind
     public SuiMoveCall? Call { get; set; }
     public TransferSui? TransferSui { get; set; }
     public ChangeEpoch? ChangeEpoch { get; set; }
+    public SuiGenesisTransaction? Genesis { get; set; }
 }
+
+public record SuiGenesisTransaction(ObjectId[] Objects);
 
 public record SuiTransferObject(SuiAddress Recipient, SuiObjectRef ObjectRef);
 public record SuiPay(SuiObjectRef[] Coins, SuiAddress[] Recipients, ulong[] Amounts);

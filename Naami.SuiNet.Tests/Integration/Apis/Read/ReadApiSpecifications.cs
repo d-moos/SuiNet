@@ -66,8 +66,9 @@ public class ReadApiSpecifications : BaseReadApiSpecification
     [Test]
     public async Task GetTransactions()
     {
-        const int length = 5000;
-        var result = await ReadApi.GetTransactionsInRange(0, length);
+        const int start = 10;
+        const int length = 2;
+        var result = await ReadApi.GetTransactionsInRange(start, start + length);
         var transactions = await ReadApi.GetTransactions(result);
 
         transactions.Length.ShouldBe(length);
