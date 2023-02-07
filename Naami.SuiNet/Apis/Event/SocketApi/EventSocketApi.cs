@@ -28,7 +28,6 @@ public class EventSocketApi : IEventSocketApi
         ws.ReconnectionHappened.Subscribe(_ => Subscribe(ws, filter));
         
         await ws.Start();
-        Subscribe(ws, filter);
         
         return ws.MessageReceived
             .Select(x => x.Text.FromJson<SubscriptionResponse<SuiEventEnvelope>>())

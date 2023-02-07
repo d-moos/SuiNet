@@ -9,7 +9,7 @@ public class EventSocketApiSpecification : BaseEventSocketApiSpecification
     public async Task Foo()
     {
         var r = await EventSocketApi.SubscribeEvent(
-            new EventTypeFilter(EventType.Publish));
+            new MoveEventTypeFilter("0x05ec326f79d5edfd6156ac3c734a418627f091cb::event::PoolCreatedEvent"));
         r.Subscribe(x =>
         {
                 Console.WriteLine(x.Id);
