@@ -1,8 +1,9 @@
-﻿namespace Naami.SuiNet.Types;
+﻿using Naami.SuiNet.Types.Transactions;
 
-public record SuiExecuteTransactionResponse
-{
-    public ImmediateReturn? ImmediateReturn { get; set; }
-    public TxCert? TxCert { get; set; }
-    public EffectsCert? EffectsCert { get; set; }
-};
+namespace Naami.SuiNet.Types;
+
+public record SuiExecuteTransactionResponse(
+    SuiCertifiedTransaction Certificate,
+    SuiCertifiedTransactionEffects Effects, /* name? */
+    bool ConfirmedLocalExecution
+);
