@@ -13,14 +13,19 @@ public class EventApiSpecification : BaseEventApiSpecification
         
         var read = new ReadApi(Utils.JsonRpcClient.Value);
         
-        var query = new EventTypeQuery(EventType.Publish);
-        var r = await EventApi.GetEvents(query, limit: 100);
+        var query = new EventTypeQuery(EventType.TransferObject);
 
-        var events = await read.GetTransactions(r.Data
-            .Where(x => x.Event.Publish!.Sender != "0x0000000000000000000000000000000000000000")
-            .Select(x => x.TxDigest.Value).ToArray());
+        var e = await EventApi.GetEvents(new TransactionEventQuery("DzVNETR3sqk6bpu7MAoS3qYTi7hWPixpaqkgsezQNSSC"));
+        var newObject = e.Data.First().Event.NewObject;
+        
+        var r = await EventApi.GetEvents(query, limit: 100);
         
         Console.WriteLine(DateTime.Now);
+        
+        foreach (var suiEventEnvelope in r.Data)
+        {
+            var b = suiEventEnvelope.Event.TransferObject.Recipient.Ownership;
+        }
         var i = 0;
     }
 }

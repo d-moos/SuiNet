@@ -2,5 +2,8 @@
 
 namespace Naami.SuiNet.Types;
 
-public record EffectsCert(SuiCertifiedTransaction Certificate, SuiCertifiedTransactionEffects Effects, /* name? */
-    bool ConfirmedLocalExecution);
+public record EffectsCert(
+    SuiCertifiedTransaction Certificate,
+    SuiCertifiedTransactionEffects Effects, /* name? */
+    bool ConfirmedLocalExecution
+);

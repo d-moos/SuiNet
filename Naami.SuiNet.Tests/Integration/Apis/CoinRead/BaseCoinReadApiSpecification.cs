@@ -54,11 +54,11 @@ public class BaseCoinReadApiSpecification
         );
 
         var packageId =
-            deployResponse.EffectsCert.Effects.Effects.Created
+            deployResponse.Effects.Effects.Created
                 .Single(x => x.Owner.Ownership == Ownership.Immutable)
                 .Reference.ObjectId;
 
-        TreasuryCapObjectId = deployResponse.EffectsCert.Effects.Effects.Created
+        TreasuryCapObjectId = deployResponse.Effects.Effects.Created
             .Single(x => x.Owner.Ownership == Ownership.AddressOwner)
             .Reference.ObjectId;
 
@@ -95,7 +95,7 @@ public class BaseCoinReadApiSpecification
                 ExecuteTransactionRequestType.WaitForEffectsCert
             );
 
-            objectIds.Add(response.EffectsCert.Effects.Effects.Created[0].Reference.ObjectId);
+            objectIds.Add(response.Effects.Effects.Created[0].Reference.ObjectId);
         }
 
         return objectIds.ToArray();

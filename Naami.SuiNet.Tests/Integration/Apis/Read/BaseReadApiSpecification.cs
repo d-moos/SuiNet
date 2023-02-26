@@ -51,9 +51,9 @@ public abstract class BaseReadApiSpecification
             ExecuteTransactionRequestType.WaitForEffectsCert
         );
 
-        var createdEvents = deployResponse.EffectsCert!.Effects.Effects.Created;
+        var createdEvents = deployResponse!.Effects.Effects.Created;
         ObjectId = createdEvents.Single(x => x.Owner.AddressOwnership?.AddressOwner == Utils.TestingSignerAddress)
             .Reference.ObjectId;
-        TransactionDigest = deployResponse.EffectsCert.Certificate.TransactionDigest;
+        TransactionDigest = deployResponse.Certificate.TransactionDigest;
     }
 }
