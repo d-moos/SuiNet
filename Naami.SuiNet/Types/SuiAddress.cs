@@ -2,7 +2,7 @@
 
 public readonly struct SuiAddress
 {
-    public const byte LENGTH = 40;
+    public const byte LENGTH = 64;
     
     private readonly string _address;
 
