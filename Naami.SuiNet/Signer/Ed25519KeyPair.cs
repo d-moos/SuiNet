@@ -1,6 +1,5 @@
 ﻿using Naami.SuiNet.Types;
 using NSec.Cryptography;
-using SHA3.Net;
 
 namespace Naami.SuiNet.Signer;
 
@@ -26,7 +25,8 @@ public abstract class SuiKeyPair
             Array.Copy(new[]{ (byte)Scheme }, hasher, 1);
             Array.Copy(PublicKey, 0, hasher, 1, PublicKey.Length);
 
-            var hash = Sha3.Sha3256().ComputeHash(hasher);
+            var blake = new Blake2b(32);
+            var hash = blake.Hash(hasher);
             var address = Convert.ToHexString(hash)[0..SuiAddress.LENGTH];
 
             return $"0x{address.ToLower()}";
